@@ -1,8 +1,13 @@
 'use strict';
 
 const delay = (ms) => {
-  const time = ms;
-  return Promise.resolve(time);
+  return new Promise((resolve, reject) => {
+    const time = ms;
+    setTimeout(() => {
+      resolve(time);
+      reject();
+    }, time);
+  });
 };
 
 const logger = (time) => console.log(`Resolved after ${time}ms`);
